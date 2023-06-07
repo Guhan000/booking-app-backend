@@ -5,6 +5,7 @@ import authRoute from './routes/auth.js';
 import usersRoute from './routes/users.js';
 import hotelsRoute from './routes/hotels.js';
 import roomsRoute from './routes/rooms.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ const connect = async () => {
 
 // middlewares
 
+app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRoute);
 app.use("/users", usersRoute);
@@ -38,7 +40,7 @@ app.use((err,req,res,next) => {
         stack: err.stack
     });
 });
- 
+
 app.listen(8800, () => {
     connect();
     console.log("Connected to backend!");
