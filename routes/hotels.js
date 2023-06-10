@@ -20,6 +20,6 @@ router.get("/countByCity", countByCity)
 
 router.get("/countByType", countByType)
 
-router.get("/room/:id", getAllRooms)
+router.get("/rooms/:id", getAllRooms)
 
 export default router;

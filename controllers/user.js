@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Room from "../models/Room.js";
 
 export const updateUser = async (req, res, next) => {
   try {
@@ -39,3 +40,22 @@ export const getAllUsers = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getAllRoomsByUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+
+    // Find the user and populate the selected rooms
+    const user = await User.findById(userId).populate({
+      path: "rooms",
+      model: "Room"
+    });
+
+    const selectedRooms = user.rooms.filter(room => room.roomNumbers.some(roomNumber => roomNumber.user === userId));
+
+    res.status(200).json(selectedRooms);
+  } catch (err) {
+    next(err);
+  }
+};
+

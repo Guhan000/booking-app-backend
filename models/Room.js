@@ -21,8 +21,12 @@ const roomSchema = new mongoose.Schema({
         number:Number,
         unavailableDates:{
             type: [Date]
-        }
-    }]
+        },
+        
+    }],
+    user: {
+        type: String
+    }
 }, {timestamps: true});
 
 export default mongoose.model("Room", roomSchema)

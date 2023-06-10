@@ -19,7 +19,10 @@ const userSchema = new mongoose.Schema({
     isAdmin:{
         type: Boolean,
         default:false
-    }
+    },
+    rooms : {
+        type: [String]
+    }    
 }, {timestamps: true});
 
 export default mongoose.model("User", userSchema)
