@@ -23,7 +23,7 @@ const connect = async () => {
 }
 
 // middlewares
-var allowlist = ['http://localhost:3000']
+var allowlist = ['https://instant-booking.netlify.app']
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (allowlist.indexOf(req.header('Origin')) !== -1) {
